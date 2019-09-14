@@ -11,6 +11,10 @@ const weekDayLabels = [
   'Saturday',
 ];
 
+const startWeekOnMonday = true;
+const weekFirstDay = startWeekOnMonday ? 1 : 0;
+const weekLastDay = startWeekOnMonday ? 0 : 6;
+
 const styles = StyleSheet.create({
   monthHeader: {
     backgroundColor: '#411',
@@ -62,10 +66,10 @@ const Day = ({date}) => {
   if (isHoliday) {
     viewStyle.push(styles.holiday);
   }
-  if (weekDay === 0) {
+  if (weekDay === weekFirstDay) {
     viewStyle.push(styles.weekFirst);
   }
-  if (weekDay === 6) {
+  if (weekDay === weekLastDay) {
     viewStyle.push(styles.weekLast);
   }
 
