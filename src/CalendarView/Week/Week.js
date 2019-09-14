@@ -1,10 +1,19 @@
 import React from 'react';
-import {Text, View} from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
 
-const Week = () => (
-  <View>
-    <Text>Week!</Text>
-  </View>
-);
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: '#eee',
+    borderRadius: 10,
+  },
+});
+
+const Week = ({startDate, endDate}) => {
+  return (
+    <View style={styles.container}>
+      <Text>Week!</Text>
+    </View>
+  );
+};
 
 export default Week;
