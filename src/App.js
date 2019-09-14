@@ -7,7 +7,7 @@
  */
 
 import React, {Fragment} from 'react';
-import {SafeAreaView, StyleSheet, ScrollView, StatusBar} from 'react-native';
+import {SafeAreaView, StatusBar} from 'react-native';
 
 import CalendarView from './CalendarView';
 
