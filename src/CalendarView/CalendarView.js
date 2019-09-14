@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
     borderBottomEndRadius: 5,
   },
   dayContent: {
-    textAlign: 'center',
+    paddingLeft: 10,
   },
 });
 
