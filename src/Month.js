@@ -16,6 +16,7 @@ const styles = StyleSheet.create({
 
 const Month = ({year, month}) => {
   const currentDate = new Date();
+  const currentYear = currentDate.getFullYear();
   const currentMonth = currentDate.getMonth();
   const currentDay = currentDate.getDate();
 
@@ -23,14 +24,15 @@ const Month = ({year, month}) => {
   let day = 1;
   while (true) {
     const date = new Date(year, month, day);
-    if (date.getMonth() !== currentMonth) {
+    if (date.getMonth() !== month) {
       break;
     }
 
     data.push({
       key: day.toString(),
       date,
-      highlight: day === currentDay,
+      highlight:
+        year === currentYear && month === currentMonth && day === currentDay,
     });
 
     day++;
@@ -38,7 +40,10 @@ const Month = ({year, month}) => {
 
   return (
     <View>
-      <MonthHeader month={month} highlight={currentMonth === month} />
+      <MonthHeader
+        month={month}
+        highlight={year === currentYear && month === currentMonth}
+      />
       <FlatList
         style={styles.list}
         data={data}
