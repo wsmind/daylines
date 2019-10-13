@@ -1,4 +1,4 @@
-package com.cali;
+package app.daylines;
 
 import android.app.Application;
 import android.util.Log;
