@@ -3,19 +3,25 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "react-native start",
-    "test": "jest",
-    "lint": "eslint ."
+    "start:native": "react-native start",
+    "test:native": "jest",
+    "lint:native": "eslint .",
+    "start:web": "react-scripts start",
+    "build:web": "react-scripts build",
+    "test:web": "react-scripts test",
+    "eject:web": "react-scripts eject"
   },
   "dependencies": {
     "react": "16.8.6",
+    "react-dom": "^16.10.2",
     "react-native": "0.60.5",
     "react-native-gesture-handler": "^1.4.1",
     "react-native-google-signin": "^2.1.0",
     "react-native-reanimated": "^1.2.0",
     "react-native-screens": "^2.0.0-alpha.3",
-    "react-navigation": "^4.0.5",
-    "react-navigation-tabs": "^2.5.2"
+    "react-navigation": "^4.0.10",
+    "react-navigation-tabs": "^2.5.2",
+    "react-scripts": "3.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.6.0",
@@ -26,9 +32,22 @@
     "eslint": "^6.4.0",
     "jest": "^24.9.0",
     "metro-react-native-babel-preset": "^0.56.0",
+    "react-native-web": "^0.11.7",
     "react-test-renderer": "16.8.6"
   },
   "jest": {
     "preset": "react-native"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
