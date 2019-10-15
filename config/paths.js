@@ -3,6 +3,7 @@
 const path = require('path');
 const fs = require('fs');
 const url = require('url');
+const glob = require('glob');
 
 // Make sure any symlinks in the project folder are resolved:
 // https://github.com/facebook/create-react-app/issues/637
@@ -52,10 +53,16 @@ const moduleFileExtensions = [
   'jsx',
 ];
 
+const nativeDependencies = [
+  'node_modules/@react-navigation',
+  ...glob.sync('node_modules/react-native*'),
+  ...glob.sync('node_modules/react-navigation*'),
+];
+
 // Resolve file paths in the same order as webpack
 const resolveModule = (resolveFn, filePath) => {
   const extension = moduleFileExtensions.find(extension =>
-    fs.existsSync(resolveFn(`${filePath}.${extension}`))
+    fs.existsSync(resolveFn(`${filePath}.${extension}`)),
   );
 
   if (extension) {
@@ -75,6 +82,7 @@ module.exports = {
   appIndexJs: resolveModule(resolveApp, 'src/index'),
   appPackageJson: resolveApp('package.json'),
   appSrc: resolveApp('src'),
+  appNativeModules: [resolveApp('src'), ...nativeDependencies.map(resolveApp)],
   appTsConfig: resolveApp('tsconfig.json'),
   appJsConfig: resolveApp('jsconfig.json'),
   yarnLockFile: resolveApp('yarn.lock'),
@@ -84,7 +92,5 @@ module.exports = {
   publicUrl: getPublicUrl(resolveApp('package.json')),
   servedPath: getServedPath(resolveApp('package.json')),
 };
-
-
 
 module.exports.moduleFileExtensions = moduleFileExtensions;
